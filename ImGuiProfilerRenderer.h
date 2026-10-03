@@ -157,7 +157,6 @@ namespace ImGuiUtils
       float markerRigthRectMargin = 3.0f;
       float markerRightRectHeight = 10.0f;
       float markerRightRectSpacing = 4.0f;
-      float nameOffset = 30.0f;
       glm::vec2 textMargin = glm::vec2(5.0f, -3.0f);
 
       auto &currFrame = frames[GetCurrFrameIndex(frameIndexOffset)];
@@ -201,10 +200,9 @@ namespace ImGuiUtils
         float taskTimeMs = float(task.endTime - task.startTime);
         std::ostringstream timeText;
         timeText.precision(2);
-        timeText << std::fixed << std::string("[") << (taskTimeMs * 1000.0f);
+        timeText << std::fixed << "[" << (taskTimeMs * 1000.0f) << " ms] " << task.name;
 
         Text(drawList, markerRightRectMax + textMargin, textColor, timeText.str().c_str());
-        Text(drawList, markerRightRectMax + textMargin + glm::vec2(nameOffset, 0.0f), textColor, (std::string("ms] ") + task.name).c_str());
       }
 
       /*
